@@ -3,7 +3,7 @@
 #M365 Modern Authentication will pop up for authentication
 connect-ippsession
 
-#Use compliance search commands to delete email. Can use various FROM, TO, Etc, fields in the ContentMatchQuery
+#Use compliance search commands to delete email. Can use various FROM, TO, Etc, fields in the ContentMatchQuery * acts as wildcard.
 
 New-ComplianceSearch -Name "Ticket#orName" -ExchangeLocation ALL -ContentMatchQuery 'FROM:"*@baylinkusa.com"'
 
