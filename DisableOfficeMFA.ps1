@@ -1,4 +1,7 @@
-﻿Connect-MsolService
+#Full process here: https://www.alitajran.com/move-from-per-user-mfa-to-conditional-access-mfa/ 
+
+
+Connect-MsolService
 
 # Sets the MFA requirement state
 function Set-MfaState {
