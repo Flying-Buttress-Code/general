@@ -12,6 +12,9 @@ Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All
 #Connect-MSOLService to pull current license users.
 Connect-MsolService
 
+#Connect to Azure AD
+connect-azuread
+
 #Display all Subscribed SKUs + SKUId for tenant. Verify SkuPartNumber matches what's expected below / alter if needed. 
 
 Get-AzureADSubscribedSku | Select SkuPartNumber,SKUID
