@@ -5,10 +5,10 @@ try {
     get-itemproperty -path $keypath -name $valuename -erroraction stop
 }
 catch [System.Management.Automation.ItemNotFoundException] {
-new-item -path $keypath -force
-new-itemproperty -path $keypath -name $valuename -type dword -value $value -force
+    new-item -path $keypath -force
+    new-itemproperty -path $keypath -name $valuename -type dword -value $value -force
 }
 
 catch {
-new-itemproperty -path $keypath -name $valuename -type dword -value $value -force
+    new-itemproperty -path $keypath -name $valuename -type dword -value $value -force
 }
