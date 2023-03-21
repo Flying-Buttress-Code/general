@@ -1,5 +1,5 @@
 # Connect to Exchange Online PowerShell
-Connect-ExchangeOnline -UserPrincipalName admin@contoso.com -showbanner:$false
+Connect-ExchangeOnline -showbanner:$false
 # Set the user's email address
 $userEmail = read-host "Please enter user you'd like to search for- e.g user@contoso.com"
 
