@@ -1,0 +1,21 @@
+# Connect to Exchange Online PowerShell
+Connect-ExchangeOnline -UserPrincipalName admin@contoso.com -showbanner:$false
+# Set the user's email address
+$userEmail = read-host "Please enter user you'd like to search for- e.g user@contoso.com"
+
+# Get the user's groups
+$userGroups = Get-Group -ResultSize Unlimited -Filter {Members -eq $userEmail}
+
+# Get the user's shared mailboxes
+$userSharedMailboxes = Get-Mailbox -ResultSize Unlimited -Filter {RecipientTypeDetails -eq "SharedMailbox"} | Get-MailboxPermission | Where-Object { $_.User -like $userEmail }
+
+# Get the user's distribution lists
+$userDistributionLists = Get-DistributionGroup -ResultSize Unlimited -Filter {Members -eq $userEmail}
+
+# Output the results
+Write-Host "Groups:"
+$userGroups.Name
+Write-Host "Shared Mailboxes:"
+$userSharedMailboxes.Identity
+Write-Host "Distribution Lists:"
+$userDistributionLists.Name
