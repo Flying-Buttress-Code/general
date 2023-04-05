@@ -1,0 +1,30 @@
+# Requires ActiveDirectory powershell module
+
+Import-Module ActiveDirectory
+
+# Get all security groups in the domain
+$SecurityGroups = Get-ADGroup -Filter 'GroupCategory -eq "Security"'
+
+# Create an empty list to store the output
+$Output = @()
+
+# Loop through each security group
+foreach ($Group in $SecurityGroups) {
+    # Get the group members
+    $GroupMembers = Get-ADGroupMember -Identity $Group.DistinguishedName -Recursive | Get-ADUser
+
+    # Concatenate the user names with a semicolon delimiter
+    $Users = ($GroupMembers | ForEach-Object { $_.SamAccountName }) -join ';'
+
+    # Create a custom object with Group and Users information
+    $OutputObj = [PSCustomObject]@{
+        GroupName  = $Group.Name
+        Users      = $Users
+    }
+
+    # Add the custom object to the output list
+    $Output += $OutputObj
+}
+
+# Save the output to a CSV file
+$Output | Export-Csv -Path "$env:USERPROFILE/desktop/SecurityGroupsAndMembers.csv" -NoTypeInformation
