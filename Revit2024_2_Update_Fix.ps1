@@ -1,5 +1,5 @@
-# Network path to Revit installation files
-$networkPath = "\\path\to\Revit\installation\files"
+# Network path to Revit installation files- make sure it's the x64\RVT subfolder, not the specific RVT.msi
+$networkPath = "\\path\to\Revit\installation\\Revit 2024\Revit_2024_G1_Win_64bit_dlm\x64\RVT"
 
 # Revit registry key
 $revitRegKey = "Registry::HKEY_CLASSES_ROOT\Installer\Products\[Revit Product Key]"
