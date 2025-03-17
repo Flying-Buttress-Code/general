@@ -1,8 +1,9 @@
 # Import CSV file
-$csvPath = "C:\temp\DenverUserNumbers.csv"
+$csvPath = "C:\temp\UserNumbers.csv"
 $users = Import-Csv -Path $csvPath
-$domain = "@ktgy.com"
+$domain = "@mydomain.com"
 $plus = "+"
+$locationidUID = "LocationID"
 
 # Log file path
 $logFilePath = "C:\temp\PhoneNumberAssignmentLog.csv"
